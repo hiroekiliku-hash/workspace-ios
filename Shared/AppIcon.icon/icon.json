@@ -1,0 +1,41 @@
+{
+  "fill" : {
+    "linear-gradient" : [
+      "srgb:0.00000,0.99144,1.00000,1.00000",
+      "srgb:0.00000,0.58980,1.00000,1.00000"
+    ]
+  },
+  "groups" : [
+    {
+      "layers" : [
+        {
+          "fill" : "automatic",
+          "image-name" : "WorkspaceMark.svg",
+          "name" : "WorkspaceMark",
+          "position" : {
+            "scale" : 1.28,
+            "translation-in-points" : [
+              9,
+              -30.720000000000027
+            ]
+          }
+        }
+      ],
+      "name" : "Workspace Mark",
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.3
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "circles" : [
+      "watchOS"
+    ],
+    "squares" : "shared"
+  }
+}

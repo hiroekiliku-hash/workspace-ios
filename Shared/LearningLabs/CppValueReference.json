@@ -1,0 +1,477 @@
+{
+  "protocol": "WORKSHOP-COURSE/1",
+  "id": "4543387c-55ed-50f7-8803-823439cb4fe6",
+  "title": "C++ · 一个 &，两种结果",
+  "summary": "一行代码，一次变化。用五步看清副本与别名。",
+  "lessons": [
+    {
+      "id": "18c3575f-5194-5af9-8cfd-cc78554da7b0",
+      "title": "改的是副本，还是原值？",
+      "estimatedMinutes": 7,
+      "objectives": [
+        "分清独立副本和同一对象的别名。",
+        "判断函数会不会改变调用者的 int 变量。"
+      ],
+      "referenceCode": {
+        "language": "cpp",
+        "source": "#include <iostream>\n\nvoid award(int& points, int bonus) {\n    points += bonus;\n}\n\nint main() {\n    int score = 7;\n    award(score, 3);\n    std::cout << score;\n}",
+        "filename": "award.cpp"
+      },
+      "blocks": [
+        {
+          "id": "4ce800ff-75f5-51c7-8621-892f8cd0079e",
+          "type": "question",
+          "title": "先猜一猜",
+          "text": "调用 award 后，score 是多少？",
+          "questionType": "singleChoice",
+          "code": {
+            "language": "cpp",
+            "source": "void award(int points) {\n    points += 3;\n}\nint main() {\n    int score = 7;\n    award(score);\n    // 现在 score 是多少？\n}",
+            "filename": "prediction.cpp"
+          },
+          "focusLines": [
+            1,
+            2
+          ],
+          "focusSpans": [
+            {
+              "line": 1,
+              "text": "int points"
+            },
+            {
+              "line": 2,
+              "text": "points"
+            }
+          ],
+          "options": [
+            {
+              "id": "seven",
+              "text": "7"
+            },
+            {
+              "id": "ten",
+              "text": "10"
+            }
+          ],
+          "correctOptionIDs": [
+            "seven"
+          ],
+          "hints": [
+            "观察 points 的声明：int，还是 int&？"
+          ],
+          "explanation": "是 7。points 是独立副本。接下来只看这个区别是怎样发生的。"
+        },
+        {
+          "id": "e8501c91-9182-56db-aee9-282b13dd5a85",
+          "type": "text",
+          "title": "跟着值走",
+          "text": "固定程序的教学推演。先看值传递，再切换引用传递；每次只观察当前一步。",
+          "presentation": {
+            "kind": "trace",
+            "trace": {
+              "variants": [
+                {
+                  "id": "value",
+                  "title": "值传递",
+                  "code": {
+                    "language": "cpp",
+                    "source": "#include <iostream>\n\nvoid award(int points, int bonus) {\n    points += bonus;\n}\n\nint main() {\n    int score = 7;\n    award(score, 3);\n    std::cout << score;\n}",
+                    "filename": "award.cpp",
+                    "highlightLines": [
+                      3
+                    ],
+                    "highlightSpans": [
+                      {
+                        "line": 3,
+                        "text": "int points"
+                      }
+                    ]
+                  },
+                  "frames": [
+                    {
+                      "title": "从 7 开始",
+                      "line": 8,
+                      "note": "main 中创建了 score。",
+                      "objects": [
+                        {
+                          "id": "score",
+                          "names": [
+                            "score"
+                          ],
+                          "value": "7",
+                          "scope": "main",
+                          "changed": true
+                        }
+                      ],
+                      "focusSpans": [
+                        {
+                          "line": 8,
+                          "text": "score"
+                        },
+                        {
+                          "line": 8,
+                          "text": "7"
+                        }
+                      ]
+                    },
+                    {
+                      "title": "复制一份",
+                      "line": 3,
+                      "note": "points 得到数值 7，是另一个对象。",
+                      "objects": [
+                        {
+                          "id": "score",
+                          "names": [
+                            "score"
+                          ],
+                          "value": "7",
+                          "scope": "main",
+                          "changed": false
+                        },
+                        {
+                          "id": "points",
+                          "names": [
+                            "points"
+                          ],
+                          "value": "7",
+                          "scope": "award",
+                          "changed": true
+                        }
+                      ],
+                      "focusSpans": [
+                        {
+                          "line": 3,
+                          "text": "int points"
+                        }
+                      ]
+                    },
+                    {
+                      "title": "只改副本",
+                      "line": 4,
+                      "note": "加上 3 的是 points，score 仍是 7。",
+                      "objects": [
+                        {
+                          "id": "score",
+                          "names": [
+                            "score"
+                          ],
+                          "value": "7",
+                          "scope": "main",
+                          "changed": false
+                        },
+                        {
+                          "id": "points",
+                          "names": [
+                            "points"
+                          ],
+                          "value": "10",
+                          "scope": "award",
+                          "changed": true
+                        }
+                      ],
+                      "focusSpans": [
+                        {
+                          "line": 4,
+                          "text": "points"
+                        },
+                        {
+                          "line": 4,
+                          "text": "bonus"
+                        }
+                      ]
+                    },
+                    {
+                      "title": "函数返回",
+                      "line": 5,
+                      "note": "points 随函数结束，score 留在 main。",
+                      "objects": [
+                        {
+                          "id": "score",
+                          "names": [
+                            "score"
+                          ],
+                          "value": "7",
+                          "scope": "main",
+                          "changed": false
+                        }
+                      ]
+                    },
+                    {
+                      "title": "输出 7",
+                      "line": 10,
+                      "note": "输出的是 score，它一直没有改变。",
+                      "objects": [
+                        {
+                          "id": "score",
+                          "names": [
+                            "score"
+                          ],
+                          "value": "7",
+                          "scope": "main",
+                          "changed": false
+                        }
+                      ],
+                      "output": "7",
+                      "focusSpans": [
+                        {
+                          "line": 10,
+                          "text": "score"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "reference",
+                  "title": "引用传递",
+                  "code": {
+                    "language": "cpp",
+                    "source": "#include <iostream>\n\nvoid award(int& points, int bonus) {\n    points += bonus;\n}\n\nint main() {\n    int score = 7;\n    award(score, 3);\n    std::cout << score;\n}",
+                    "filename": "award.cpp",
+                    "highlightLines": [
+                      3
+                    ],
+                    "highlightSpans": [
+                      {
+                        "line": 3,
+                        "text": "int&"
+                      },
+                      {
+                        "line": 3,
+                        "text": "points"
+                      }
+                    ]
+                  },
+                  "frames": [
+                    {
+                      "title": "从 7 开始",
+                      "line": 8,
+                      "note": "仍然从同一个初值开始。",
+                      "objects": [
+                        {
+                          "id": "score",
+                          "names": [
+                            "score"
+                          ],
+                          "value": "7",
+                          "scope": "main",
+                          "changed": true
+                        }
+                      ],
+                      "focusSpans": [
+                        {
+                          "line": 8,
+                          "text": "score"
+                        },
+                        {
+                          "line": 8,
+                          "text": "7"
+                        }
+                      ]
+                    },
+                    {
+                      "title": "多一个名字",
+                      "line": 3,
+                      "note": "points 绑定到 score，两个名字指同一个对象。",
+                      "objects": [
+                        {
+                          "id": "score",
+                          "names": [
+                            "score",
+                            "points"
+                          ],
+                          "value": "7",
+                          "scope": "main",
+                          "changed": true
+                        }
+                      ],
+                      "focusSpans": [
+                        {
+                          "line": 3,
+                          "text": "int&"
+                        },
+                        {
+                          "line": 3,
+                          "text": "points"
+                        }
+                      ]
+                    },
+                    {
+                      "title": "改到原值",
+                      "line": 4,
+                      "note": "通过 points 加 3，score 也就变成 10。",
+                      "objects": [
+                        {
+                          "id": "score",
+                          "names": [
+                            "score",
+                            "points"
+                          ],
+                          "value": "10",
+                          "scope": "main",
+                          "changed": true
+                        }
+                      ],
+                      "focusSpans": [
+                        {
+                          "line": 4,
+                          "text": "points"
+                        },
+                        {
+                          "line": 4,
+                          "text": "bonus"
+                        }
+                      ]
+                    },
+                    {
+                      "title": "函数返回",
+                      "line": 5,
+                      "note": "名字 points 不再可用，原对象仍然存在。",
+                      "objects": [
+                        {
+                          "id": "score",
+                          "names": [
+                            "score"
+                          ],
+                          "value": "10",
+                          "scope": "main",
+                          "changed": false
+                        }
+                      ]
+                    },
+                    {
+                      "title": "输出 10",
+                      "line": 10,
+                      "note": "score 的新值是 10。",
+                      "objects": [
+                        {
+                          "id": "score",
+                          "names": [
+                            "score"
+                          ],
+                          "value": "10",
+                          "scope": "main",
+                          "changed": false
+                        }
+                      ],
+                      "output": "10",
+                      "focusSpans": [
+                        {
+                          "line": 10,
+                          "text": "score"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "a65cec5b-0762-5f6e-95a5-e91d0c9daa04",
+          "type": "question",
+          "title": "再加一次呢？",
+          "text": "现在 points 是引用。连续加 3、再加 2，最后输出多少？",
+          "questionType": "shortAnswer",
+          "answerFormat": "output",
+          "code": {
+            "language": "cpp",
+            "source": "#include <iostream>\n\nvoid award(int& points, int bonus) {\n    points += bonus;\n}\n\nint main() {\n    int score = 7;\n    award(score, 3);\n    award(score, 2);\n    std::cout << score;\n}",
+            "highlightLines": [
+              3,
+              9,
+              10
+            ]
+          },
+          "input": {
+            "kind": "integer",
+            "placeholder": "输入最后输出的整数",
+            "minLines": 2,
+            "maxLines": 2
+          },
+          "focusLines": [
+            3,
+            9,
+            10
+          ],
+          "focusSpans": [
+            {
+              "line": 3,
+              "text": "int&"
+            },
+            {
+              "line": 9,
+              "text": "3"
+            },
+            {
+              "line": 10,
+              "text": "2"
+            }
+          ],
+          "acceptedAnswers": [
+            "12"
+          ],
+          "hints": [
+            "两次调用修改的都是 main 中的同一个 score。"
+          ],
+          "explanation": "输出 12：7 + 3 + 2。两次调用里的 points 都是 score 的别名。"
+        },
+        {
+          "id": "e7926659-025a-5901-b72e-94e8824aa61a",
+          "type": "question",
+          "title": "轮到你改原值",
+          "text": "写一个 void doubleScore(...)，让传入的 int 变量翻倍。只写函数定义。提交后自行核对。",
+          "questionType": "shortAnswer",
+          "answerFormat": "code",
+          "code": {
+            "language": "cpp",
+            "source": "#include <iostream>\n\nvoid doubleScore(int score) {\n    // 修改形参，并让传入的变量翻倍\n}\n\nint main() {\n    int score = 7;\n    doubleScore(score);\n    std::cout << score;\n}",
+            "filename": "double-score.cpp"
+          },
+          "input": {
+            "kind": "code",
+            "language": "cpp",
+            "placeholder": "修改函数，让它改变调用者的变量",
+            "starterCode": "void doubleScore(int score) {\n    // 修改形参，并让传入的变量翻倍\n}",
+            "minLines": 5,
+            "maxLines": 10
+          },
+          "focusLines": [
+            3,
+            4
+          ],
+          "focusSpans": [
+            {
+              "line": 3,
+              "text": "int score"
+            }
+          ],
+          "hints": [
+            "要修改调用者的变量，形参需要 int&。"
+          ],
+          "explanation": "参考实现：\nvoid doubleScore(int& score) {\n    score *= 2;\n}\n\n核对两点：形参使用 int&；函数体修改了这个形参。参数名和等价写法可以不同。本题不编译，也不按参考文本判对错。"
+        },
+        {
+          "id": "04147008-fca8-55e3-8352-8d5039ab4c3d",
+          "type": "callout",
+          "title": "只记住这一点",
+          "text": "int points：另复制一个值。\nint& points：给原对象一个别名。\n要知道改了谁，先看形参声明。",
+          "focusLines": [
+            3
+          ],
+          "focusSpans": [
+            {
+              "line": 3,
+              "text": "int&"
+            },
+            {
+              "line": 3,
+              "text": "points"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+<style>
+:root{color-scheme:light dark;--ink:#1e3142;--muted:#63788c;--accent:#567796;--wash:#e8eff6;--surface:#f7f9fc;--panel:#fff;--edge:#dce5ee;--orange:#b76b37;--orange-wash:#f7ecdf;--code:#243b51;--shadow:0 6px 22px #304a6210}
+html,body{margin:0!important;padding:0!important;height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;color:var(--ink);background:var(--surface)}*{box-sizing:border-box}button,input{font:inherit}button{color:inherit;cursor:pointer;touch-action:manipulation}button:focus-visible,input:focus-visible{outline:3px solid var(--orange);outline-offset:2px}button:disabled{opacity:.35;cursor:default}.lab{height:100%;max-height:640px;min-height:590px;padding:14px;display:flex;flex-direction:column;gap:10px;overflow:hidden}.top{display:flex;align-items:center;justify-content:space-between;gap:6px}.eyebrow{font-size:10px;letter-spacing:1px;color:var(--muted);font-weight:700}.title{font-size:19px;font-weight:800;letter-spacing:-.7px;line-height:1.3}.badge{font-size:10px;font-weight:650;line-height:1.5;color:var(--muted);text-align:right}.modes{display:grid;grid-template-columns:1fr 1fr;gap:3px;padding:3px;background:var(--wash);border-radius:12px}.modes button{border:0;border-radius:9px;background:none;min-height:38px;font-size:13px;font-weight:700}.modes button[aria-pressed=true]{background:var(--panel);color:var(--accent);box-shadow:var(--shadow)}.inputs{display:flex;align-items:center;gap:8px;min-height:36px}.input-group{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted)}input[type=number]{width:49px;height:34px;border:1px solid var(--edge);border-radius:8px;text-align:center;color:var(--ink);background:var(--panel);font-weight:700;font-size:13px;padding:2px}.compare-toggle{margin-left:auto;background:none;border:0;color:var(--accent);font-size:11px;font-weight:700;padding:6px 0;min-height:36px!important}.workspace{display:grid;grid-template-columns:1fr;gap:10px;min-height:0;flex:1}.code{margin:0;padding:8px;background:var(--panel);border:1px solid var(--edge);border-radius:13px;color:var(--code);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;line-height:17px;overflow:hidden;white-space:pre}.code-line{display:block;padding:0 4px;border-radius:4px;transition:background-color .16s ease}.code-line.active{background:var(--wash);box-shadow:inset 2px 0 var(--accent)}.line-number{display:inline-block;width:16px;color:var(--muted);font-size:9px;user-select:none}.token{color:var(--orange);font-weight:750}.observe{display:flex;flex-direction:column;gap:7px;min-height:0}.stage-heading{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:750;line-height:18px}.stage-count{font-size:10px;letter-spacing:.8px;color:var(--accent);font-variant-numeric:tabular-nums}.memory{order:1;position:relative;display:grid;grid-template-columns:1fr 34px 1fr;gap:0;background:var(--wash);border-radius:13px;padding:9px 10px;min-height:109px;align-items:center}.scope{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;font-weight:650;color:var(--muted);margin-bottom:4px}.object{background:var(--panel);border:1px solid var(--edge);border-radius:9px;padding:6px 9px;min-height:65px}.object-name{font-size:11px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}.object-value{font-size:25px;font-weight:800;line-height:31px;font-variant-numeric:tabular-nums;letter-spacing:-1px}.object.changed{border-color:var(--orange);background:var(--orange-wash)}.memory-right{min-width:0}.connection{height:28px;align-self:center;color:var(--accent)}.connection svg{display:block;width:100%;height:100%;overflow:visible}.binding{min-height:65px;display:flex;flex-direction:column;justify-content:center;gap:3px;border-left:2px solid var(--accent);padding-left:9px}.alias-name{font:700 12px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--accent)}.alias-note,.ended{font-size:10px;color:var(--muted);line-height:15px}.bonus{font-size:10px;color:var(--muted);margin-top:4px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}.state-caption{order:2;font-size:11px;color:var(--muted);line-height:17px;min-height:34px;margin:0}.output{order:3;background:var(--panel);border:1px solid var(--edge);border-radius:9px;padding:6px 9px;display:flex;justify-content:space-between;align-items:center;gap:6px;min-height:36px}.output-label{font:10px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted)}.output-value{font:750 19px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--accent)}.compare{order:1;min-height:152px;align-items:center;display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--edge);border-radius:9px;overflow:hidden;background:var(--panel);font-size:10px;color:var(--muted)}.compare>div{padding:6px 8px}.compare>div+div{border-left:1px solid var(--edge)}.compare strong{font-size:15px;color:var(--ink);margin-left:5px;font-variant-numeric:tabular-nums}.compare-label{font-size:9px;color:var(--orange)}[hidden]{display:none!important}.connection[hidden]{display:block!important;visibility:hidden}.bottom{margin-top:auto;display:flex;flex-direction:column;gap:7px}.scrubber{width:100%;margin:0;height:20px;accent-color:var(--accent)}.transport{display:grid;grid-template-columns:44px 44px 1fr;gap:7px}.transport button{border:1px solid var(--edge);border-radius:10px;background:var(--panel);min-height:42px!important;font-weight:700;font-size:12px}.transport .next{background:var(--accent);color:#fff;border-color:transparent}.reset-icon{width:18px;height:18px;vertical-align:middle}.footer-note{font-size:9px;color:var(--muted);line-height:13px;text-align:center;margin:0}.live{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(prefers-color-scheme:dark){:root{--ink:#e4ecf4;--muted:#9aafc1;--accent:#a3bdd7;--wash:#25384a;--surface:#172431;--panel:#20303f;--edge:#395065;--orange:#e4b180;--orange-wash:#473b32;--code:#d4e4f2;--shadow:none}.transport .next{color:#152533}}@media(min-width:620px){.lab{padding:20px;gap:14px;min-height:500px}.title{font-size:25px}.badge{font-size:11px}.workspace{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:center}.code{font-size:12px;line-height:25px;padding:14px 10px}.memory{min-height:150px;padding:15px}.object,.binding{min-height:82px}.object-value{font-size:34px;line-height:42px}.scope{margin-bottom:9px}.state-caption{order:2;font-size:12px;line-height:19px;min-height:38px}.output{min-height:46px}.output-value{font-size:23px}.inputs{gap:16px}.input-group{font-size:12px}.modes button{font-size:14px}.transport{grid-template-columns:50px 50px 1fr}.transport button{min-height:44px!important}.footer-note{font-size:10px}.bottom{gap:9px}.compare>div{padding:8px 10px}}@media(max-width:340px){.lab{padding:11px;gap:8px}.title{font-size:18px}.code{font-size:10px;line-height:16px}.workspace{gap:8px}.memory{padding:8px;min-height:100px}.object{padding:5px 7px}.state-caption{order:2;font-size:10px;line-height:15px;min-height:30px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important}}
+</style>
+<section class="lab" aria-label="C++ 传参实验室">
+<header class="top"><div><div class="eyebrow">C++ / PARAMETER LAB</div><div class="title">拷贝，还是别名？</div></div><div class="badge">教学推演 · 固定程序<br>不编译或运行 C++</div></header>
+<div class="modes" aria-label="传参方式"><button id="mode-value" type="button" aria-pressed="true">值传递 <span aria-hidden="true">int</span></button><button id="mode-reference" type="button" aria-pressed="false">引用传递 <span aria-hidden="true">int&amp;</span></button></div>
+<div class="inputs"><label class="input-group" for="initial">初值 <input id="initial" type="number" inputmode="numeric" min="-9" max="20" step="1" value="7"></label><label class="input-group" for="bonus">增量 <input id="bonus" type="number" inputmode="numeric" min="-9" max="20" step="1" value="3"></label><button id="compare-toggle" class="compare-toggle" type="button" aria-expanded="false" aria-controls="comparison">并排对照 ＋</button></div>
+<div class="workspace">
+<pre class="code" aria-label="固定 C++ 程序；高亮为当前执行位置"><code><span class="code-line" id="line-signature"><span class="line-number">1</span>void award(<span class="token" id="parameter">int points</span>,</span><span class="code-line"><span class="line-number">2</span>           int bonus) {</span><span class="code-line" id="line-add"><span class="line-number">3</span>  points += bonus;</span><span class="code-line" id="line-return"><span class="line-number">4</span>}</span><span class="code-line active" id="line-main"><span class="line-number">5</span>int main() { int score = <span id="code-initial">7</span>;</span><span class="code-line" id="line-call"><span class="line-number">6</span>  award(score, <span id="code-bonus">3</span>);</span><span class="code-line" id="line-print"><span class="line-number">7</span>  std::cout &lt;&lt; score; }</span></code></pre>
+<div class="observe"><div class="stage-heading"><span class="stage-count" id="stage-count">01 / 05</span><span id="stage-title">创建原对象</span></div>
+<div class="memory" id="memory" aria-label="对象与形参状态"><div><div class="scope">main</div><div class="object" id="score-object"><div class="object-name">score</div><div class="object-value" id="score-value">7</div></div><div class="bonus" aria-hidden="true">原对象</div></div>
+<div class="connection" id="connection" hidden><svg viewBox="0 0 34 28" aria-hidden="true"><path id="connection-path" d="M3 14H29M24 9L29 14L24 19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div class="memory-right"><div class="scope">award</div><div id="copy-object" class="object" hidden><div class="object-name">points</div><div class="object-value" id="points-value">7</div></div><div id="alias-binding" class="binding" hidden><div class="alias-name">points</div><div class="alias-note">score 的别名<br>不是第二个对象</div></div><div id="inactive" class="binding"><span class="ended" id="inactive-label">尚未调用</span></div><div id="bonus-label" class="bonus">—</div></div></div>
+<p class="state-caption" id="caption">先有一个 score 对象。沿着执行步骤，看 points 会发生什么。</p>
+<div class="output" id="output-panel"><span class="output-label">std::cout</span><span class="output-value" id="output">—</span></div>
+<div class="compare" id="comparison" hidden><div>值传递 →<strong id="compare-value">7</strong><div class="compare-label">完整执行后 · 原对象不变</div></div><div>引用传递 →<strong id="compare-reference">10</strong><div class="compare-label">完整执行后 · 同一个对象</div></div></div>
+</div></div>
+<div class="bottom"><label class="live" for="progress">执行进度，可左右拖动或使用方向键</label><input class="scrubber" id="progress" type="range" min="0" max="4" step="1" value="0" aria-valuetext="第 1 步，创建原对象"><div class="transport"><button id="reset" type="button" aria-label="重新开始"><svg class="reset-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 11a8 8 0 1 1 1 5M4 5v6h6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button id="previous" type="button" aria-label="上一步" disabled>←</button><button class="next" id="next" type="button">下一步 →</button></div><p class="footer-note">改初值或增量可重做实验 · 输入限 −9 至 20</p></div><div class="live" id="announcement" aria-live="polite" aria-atomic="true"></div>
+</section>
+<script id="lab-model">
+// Pure, bounded teaching model for this fixed program. No C++ execution occurs.
+function stateAt(mode, initial, bonus, step) {
+  const boundedInteger = value => Number.isFinite(Number(value)) ? Math.max(-9, Math.min(20, Math.trunc(Number(value)))) : 0;
+  const start = boundedInteger(initial), increment = boundedInteger(bonus);
+  const stage = Number.isFinite(Number(step)) ? Math.max(0, Math.min(4, Math.trunc(Number(step)))) : 0;
+  const isReference = mode === 'reference';
+  const parameterActive = stage === 1 || stage === 2;
+  const callerValue = isReference && stage >= 2 ? start + increment : start;
+  return {
+    stage, initial: start, bonus: increment, isReference, parameterActive,
+    callerValue,
+    parameterValue: parameterActive ? (stage === 2 ? start + increment : start) : null,
+    output: stage === 4 ? callerValue : null,
+    valueOutput: start,
+    referenceOutput: start + increment
+  };
+}
+</script>
+<script id="lab-controller">
+(function () {
+  'use strict';
+  const byID = id => document.getElementById(id);
+  const state = {mode:'value', stage:0, initial:7, bonus:3, compare:false};
+  const titles = ['创建原对象','传入形参','执行加法','退出函数','观察输出'];
+  const codeLines = ['line-signature','line-add','line-return','line-main','line-call','line-print'];
+  let pendingFrame = null;
+  function value(id, text) { byID(id).textContent = String(text); }
+  function hide(id, flag) { byID(id).hidden = flag; }
+  function schedule() {
+    if (window.WorkshopRuntime) { window.WorkshopRuntime.invalidate('cpp-parameter-lab', render); return; }
+    if (pendingFrame !== null) return;
+    pendingFrame = requestAnimationFrame(function () { pendingFrame = null; render(); });
+  }
+  function render() {
+    const model = stateAt(state.mode, state.initial, state.bonus, state.stage);
+    const reference = model.isReference;
+    const inside = model.parameterActive;
+    const modified = model.stage >= 2;
+    const result = model.referenceOutput;
+    const score = model.callerValue;
+    value('parameter', reference ? 'int& points' : 'int points');
+    value('code-initial', state.initial); value('code-bonus', state.bonus);
+    value('score-value', score); value('points-value', model.parameterValue === null ? '—' : model.parameterValue);
+    value('stage-count', '0' + (state.stage + 1) + ' / 05'); value('stage-title', titles[state.stage]);
+    value('inactive-label', state.stage === 0 ? '尚未调用' : '调用已结束');
+    value('bonus-label', inside ? 'bonus = ' + state.bonus : '—');
+    value('output', model.output === null ? '—' : model.output);
+    value('compare-value', model.valueOutput); value('compare-reference', model.referenceOutput);
+    hide('copy-object', !inside || reference); hide('alias-binding', !inside || !reference);
+    hide('inactive', inside); hide('connection', !inside); hide('comparison', !state.compare);
+    hide('memory', state.compare); hide('output-panel', state.compare);
+    byID('connection-path').setAttribute('d', reference ? 'M30 14H5M10 9L5 14L10 19' : 'M3 14H29M24 9L29 14L24 19');
+    byID('score-object').classList.toggle('changed', reference && modified);
+    byID('copy-object').classList.toggle('changed', state.stage === 2);
+    byID('mode-value').setAttribute('aria-pressed', String(!reference));
+    byID('mode-reference').setAttribute('aria-pressed', String(reference));
+    byID('compare-toggle').setAttribute('aria-expanded', String(state.compare));
+    value('compare-toggle', state.compare ? '收起对照 −' : '并排对照 ＋');
+    byID('previous').disabled = state.stage === 0;
+    byID('next').disabled = state.stage === 4;
+    value('next', state.stage === 4 ? '推演完成 ✓' : '下一步 →');
+    byID('progress').value = String(state.stage);
+    byID('progress').setAttribute('aria-valuetext', '第 ' + (state.stage + 1) + ' 步，' + titles[state.stage]);
+    const active = state.stage === 0 ? ['line-main'] : state.stage === 1 ? ['line-signature','line-call'] : state.stage === 2 ? ['line-add'] : state.stage === 3 ? ['line-return'] : ['line-print'];
+    codeLines.forEach(id => byID(id).classList.toggle('active', active.includes(id)));
+    const captions = reference ? [
+      '先有一个 score 对象。传参后，points 会成为它的另一个名字。',
+      'points 绑定到 score：两个名字，同一个对象。bonus 是独立的值形参。',
+      '通过 points 加 ' + state.bonus + '，就是修改 score；现在它的值是 ' + score + '。',
+      '函数结束，引用形参的生命周期结束；main 中的 score 仍然存在，值为 ' + score + '。',
+      '输出 ' + score + '。引用传递没有拷贝 score；函数改到了原对象。'
+    ] : [
+      '先有一个 score 对象。传参时，会用它的值创建一份独立拷贝。',
+      'points 是独立的 int 对象，初值来自 score。bonus 也是值形参。',
+      'points 从 ' + state.initial + ' 变成 ' + result + '；score 仍是 ' + state.initial + '。',
+      '函数结束，形参对象的生命周期结束；那份修改不会传回 score。',
+      '输出 ' + score + '。值传递修改的是拷贝，main 中的 score 不变。'
+    ];
+    value('caption', state.compare ? '相同输入，完整执行后的输出。值传递保留原值；引用传递修改原对象。' : captions[state.stage]);
+    value('announcement', titles[state.stage] + '。' + captions[state.stage]);
+  }
+  function setMode(mode) { if (state.mode === mode) return; state.mode = mode; state.stage = 0; schedule(); }
+  byID('mode-value').addEventListener('click', () => setMode('value'));
+  byID('mode-reference').addEventListener('click', () => setMode('reference'));
+  byID('next').addEventListener('click', () => { state.stage = Math.min(4, state.stage + 1); schedule(); });
+  byID('previous').addEventListener('click', () => { state.stage = Math.max(0, state.stage - 1); schedule(); });
+  byID('reset').addEventListener('click', () => { state.stage = 0; schedule(); });
+  byID('progress').addEventListener('input', event => { state.stage = Math.max(0, Math.min(4, Number(event.target.value))); schedule(); });
+  byID('compare-toggle').addEventListener('click', () => { state.compare = !state.compare; schedule(); });
+  ['initial','bonus'].forEach(key => {
+    byID(key).addEventListener('input', event => {
+      const raw = event.target.value;
+      if (raw === '' || raw === '-') return;
+      const number = Number(raw);
+      if (!Number.isFinite(number)) return;
+      state[key] = Math.max(-9, Math.min(20, Math.trunc(number)));
+      state.stage = 0; schedule();
+    });
+    byID(key).addEventListener('change', event => { event.target.value = String(state[key]); });
+    byID(key).addEventListener('blur', event => { event.target.value = String(state[key]); });
+  });
+  render();
+})();
+</script>
